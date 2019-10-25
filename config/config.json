@@ -1,0 +1,16 @@
+{
+    "__default__" :
+    {
+        "running_locally" : "True"
+    },
+    "project": {
+        "inputpath": "input"
+    },
+    "tepid": {
+        "basepath": "/home/steve/bin/TEPID",
+        "scripts": "/home/steve/bin/TEPID/Scripts"
+    },
+    "tedb": "input/teann/Alyrata_TEs.AtIDs.all.gff",
+    "ref": "input/ref/alygenome.fasta",
+    "refline": "arenosa"
+}

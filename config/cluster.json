@@ -1,0 +1,16 @@
+{
+    "__default__" :
+    {
+        "account" : "rchoudhury",
+        "time" : "24:00:00",
+        "n" : 1,
+        "partition" : "empi"
+    },
+    "compute1" :
+    {
+        "partition" : "empi",
+        "mem": "245GB",
+        "output": "slurm_out/run_supernova.out",
+        "error": "slurm_out/run_supernova.err"
+    }
+}
