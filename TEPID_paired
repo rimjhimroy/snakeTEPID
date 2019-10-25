@@ -27,16 +27,18 @@ shell.prefix("set -euo pipefail; ")
 
 rule all:
     input:
-        expand('output/align/{sample}/{sample}.bam', zip, sample=args['SAMPLES']),
-        expand('output/align/{sample}/{sample}.bam.bai', zip, sample=args['SAMPLES']),
-        expand('output/align/{sample}/{sample}.split.bam', zip, sample=args['SAMPLES']),
-        expand('output/align/{sample}/{sample}.umap.fastq', zip, sample=args['SAMPLES'])
+        expand('output/align/{sample}/insertions_{sample}.bed', zip, sample=args['SAMPLES']),
+        expand('output/align/{sample}/insertion_reads_{sample}.txt', zip, sample=args['SAMPLES']),
+        expand('output/align/{sample}/deletions_{sample}.bed', zip, sample=args['SAMPLES']),
+        expand('output/align/{sample}/deletion_reads_{sample}.txt', zip, sample=args['SAMPLES']),
+        expand('output/logs/tepid_discover_log_{sample}.txt', zip, sample=args['SAMPLES'])
 
 ##### setup singularity #####
 
 # this container defines the underlying OS for each job when using the workflow
 # with --use-conda --use-singularity
-singularity: "docker://continuumio/miniconda2"
+
+singularity: "docker://continuumio/miniconda3:4.4.10"
 
 ##### setup report #####
 
@@ -45,4 +47,5 @@ report: "report/workflow.rst"
 
 ##### load rules #####    
 include: "rules/01_tepid_map.smk"
+include: "rules/02_tepid_discover.smk"
 

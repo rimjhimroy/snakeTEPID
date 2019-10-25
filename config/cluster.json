@@ -3,14 +3,23 @@
     {
         "account" : "rchoudhury",
         "time" : "24:00:00",
-        "n" : 1,
-        "partition" : "empi"
-    },
-    "compute1" :
-    {
+        "cpu" : 1,
         "partition" : "empi",
-        "mem": "245GB",
-        "output": "slurm_out/run_supernova.out",
-        "error": "slurm_out/run_supernova.err"
+        "output": "output/slurm_out/{rule}.{wildcards.sample}_%j.out",
+        "error": "output/slurm_out/{rule}.{wildcards.sample}_%j.err"
+    },
+    "tepid_map" :
+    {
+        "partition" : "all",
+        "time" : "4-0",
+        "mem": "48G",
+        "cpu": "8"
+    },
+    "tepid_discover" :
+    {
+        "partition" : "all",
+        "time" : "4-0",
+        "mem": "48G",
+        "cpu": "8"
     }
 }

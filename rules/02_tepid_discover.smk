@@ -1,15 +1,15 @@
 rule tepid_discover:
      input:
-        bam   = 'align/{sample}/{sample}.bam',
-        split = 'align/{sample}/{sample}.split.bam'
+        bam   = 'output/align/{sample}/{sample}.bam',
+        split = 'output/align/{sample}/{sample}.split.bam'
      output:
-        inbed    = 'align/{sample}/insertions_{sample}.bed',
-        inreads  = 'align/{sample}/insertion_reads_{sample}.txt',
-        delbed   = 'align/{sample}/deletions_{sample}.bed',
-        delreads = 'align/{sample}/deletion_reads_{sample}.txt',
-        logs     = 'logs/tepid_discover_log_{sample}.txt'
+        'output/align/{sample}/insertions_{sample}.bed',
+        'output/align/{sample}/insertion_reads_{sample}.txt',
+        'output/align/{sample}/deletions_{sample}.bed',
+        'output/align/{sample}/deletion_reads_{sample}.txt',
+        'output/logs/tepid_discover_log_{sample}.txt'
      params:
-        tedb = TEDB
+        tedb = args['TEDB']
      shell:
         "tepid-discover -p 12 -n {wildcards.sample} -c {input.bam} -s {input.split} -t {params.tedb} &&"
         "mv insertions_{wildcards.sample}.bed {output.inbed} &&"
