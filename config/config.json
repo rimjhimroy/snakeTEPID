@@ -7,10 +7,10 @@
         "inputpath": "input"
     },
     "tepid": {
-        "basepath": "/home/steve/bin/TEPID",
-        "scripts": "/home/steve/bin/TEPID/Scripts"
+        "basepath": "/home/ubelix/ips/rchoudhury/TEPID-fix",
+        "scripts": "/home/ubelix/ips/rchoudhury/TEPID-fix/Scripts"
     },
     "tedb": "input/teann/Alyrata_TEs.AtIDs.all.gff",
-    "ref": "input/ref/alygenome.fasta",
+    "ref": "input/ref/alygenomes.fasta",
     "refline": "arenosa"
 }

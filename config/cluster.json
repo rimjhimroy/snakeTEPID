@@ -8,6 +8,15 @@
         "output": "output/slurm_out/{rule}.{wildcards.sample}_%j.out",
         "error": "output/slurm_out/{rule}.{wildcards.sample}_%j.err"
     },
+    "yaha_bowtie_index" :
+    {
+        "partition" : "all",
+        "time" : "4-0",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_%j.out",
+        "error": "output/slurm_out/{rule}_%j.err"
+    },
     "tepid_map" :
     {
         "partition" : "all",

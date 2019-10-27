@@ -1,10 +1,11 @@
 # SnakeTEPID
 
-TEPID is generally frustrating to install and there are several bugs that needs to be addressed. This snakemake workflow of TEPID takes care of the installations
+TEPID is generally frustrating to install and there are several bugs that still needs to be addressed. This snakemake workflow for TEPID seamlessly takes care of the installations and runs the full pipeline from tepid-map to genotype.py. All you have to do is prepare your data according to the instructions and run it.
+
 ## REQUIRED:
 
 Python 3
-Snakemake
+Snakemake (Tested with 5.7.4) [¨problem with activation of tepid env from snakemake]
 Conda
 Singularity (system-wide installation, not with conda) (at the moment singularity is not working)
 

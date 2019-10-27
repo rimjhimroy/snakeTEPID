@@ -6,6 +6,7 @@ sbatch_args = {}
 
 configfile: "config/config.json"
 
+
 if config["__default__"]["running_locally"]=="True":
     # print ("Running Locally")
     args["running_locally"] = True
@@ -15,6 +16,8 @@ else:
     print ("Running on cluster")
 
 
+# cluster config
+
 
 args['SAMPLES'] = glob_wildcards(config['project']['inputpath']+"/test/{S}_R1_001.fastq.gz").S
 args['REFERENCE'] = config['ref']
@@ -23,7 +26,8 @@ args['SCRIPTS'] = config['tepid']['scripts']
 args['REFLINE'] = config['refline']
 # bash safe mode
 shell.executable("/bin/bash")
-shell.prefix("set -euo pipefail; ")
+#shell.prefix("set -euo pipefail; ")
+#shell.prefix("source $HOME/.bashrc")
 
 rule all:
     input:
@@ -45,7 +49,8 @@ singularity: "docker://continuumio/miniconda3:4.4.10"
 report: "report/workflow.rst"
 
 
-##### load rules #####    
+##### load rules #####   
+include: "rules/a_yaha_bowtie_index.smk" 
 include: "rules/01_tepid_map.smk"
 include: "rules/02_tepid_discover.smk"
 

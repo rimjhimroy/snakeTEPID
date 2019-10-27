@@ -7,7 +7,8 @@
 #SBATCH --mail-type=END
 
 mkdir "output"
-mkdir "slurm_out"
-
+mkdir "output/slurm_out"
+source ~/.bashrc
+conda activate snakemake
 echo "Executing paired-end workflow"
 snakemake -s TEPID_paired -p -j 9999 --latency-wait 120 --use-conda --cluster-config config/cluster.json --cluster "sbatch -c {cluster.cpu} --mem={cluster.mem} -t {cluster.time} -p {cluster.partition} -o {cluster.output} -e {cluster.error} --mail-type=FAIL"
