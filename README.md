@@ -5,14 +5,14 @@ TEPID is generally frustrating to install and there are several bugs that still 
 ## REQUIRED:
 
 Python 3
-Snakemake (Tested with 5.7.4) [¨problem with activation of tepid env from snakemake]
+Snakemake (Tested with 5.7.4) [problem with activation of tepid env from snakemake]
 Conda
 Singularity (system-wide installation, not with conda) (at the moment singularity is not working)
 
 ## TARGET PLATFORM:
 
 (Required) Singularity >= 2.4 (does not require sudo access) or Docker (requires sudo access)
-(Optional) Sun Grid Compute Engine
+(Optional) SLURM
 (Optional) Ubuntu 16.04 (Xenial)
 
 ## Create snakemake environment
@@ -27,6 +27,27 @@ conda create -c bioconda -c conda-forge -n snakemake snakemake
 conda activate snakemake
 ```
 
+## Check your '.bashrc' file
+The following conda initiallize block should be moved to the end in thre file:
+
+```bash
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/[user]]/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/[user]/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/[user]/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/[user]/miniconda3/bin:$PATH"
+    fi
+fi
+
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
 ## Clone this repository
 
 git clone https://github.com/rimjhimroy/snakeTEPID.git
@@ -35,7 +56,7 @@ git clone https://github.com/rimjhimroy/snakeTEPID.git
 
 1. Copy or symlink your raw data (*.fastq.gz files) into the 'input/samples/' folder.
 
-2. Make sure the data in samples folder has the following format: [SAMPLE_INCLUDING_LANE]_R1_001.fastq.gz and [SAMPLE_INCLUDING_LANE]_R2_001.fastq.gz
+2. Make sure the data in samples folder has the following format: [SAMPLE_INCLUDING_LANE]_R1_001.fastq.gz and [SAMPLE_INCLUDING_LANE]_R2_001.fastq.gz. Lane information should be in 3 digit format like: '_L00X', eg. '_L001'. Example file name: 'BOR_01_L003_R1_001.fastq' and 'BOR_01_L003_R2_001.fastq'.
 
 3. Download the latest genome FASTA file in 'input/ref/' and TE annotation in 'input/teann' for your organism
 

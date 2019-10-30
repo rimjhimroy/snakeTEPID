@@ -19,10 +19,11 @@ rule tepid_refine:
         inpoly = "../insertions_poly_te.bed",
         delbed  = "../deletions.bed",
         bam   = '{sample}.bam',
-        split = '{sample}.split.bam'
+        split = '{sample}.split.bam',
+        basepath=args['BASEPATH']
     shell:
           "cd align/{wildcards.sample} &&"
-          "tepid-refine "
+          "{params.basepath}/tepid-refine "
           " -i {params.inbed}"
           " -d {params.delbed}"
           " -p 12"

@@ -1,6 +1,19 @@
 import os
 import json
 
+class sampmap:
+    def __init__(self,entry):
+        MAPTOLANE = dict(zip(args['SAMPLES'],args['SAMPLES']))
+        inv = {}
+        for key, value in MAPTOLANE.items():
+            MAPTOLANE[key] = value.split('_L00')[0]
+        self.lane = list(MAPTOLANE.keys())
+        sample = list(MAPTOLANE.values())
+        for key, val in MAPTOLANE.items():
+            inv[val] = inv.get(val, []) + [key]
+        self.map = inv
+        self.sample = set(sample)
+
 args = {}
 sbatch_args = {}
 
@@ -22,8 +35,17 @@ else:
 args['SAMPLES'] = glob_wildcards(config['project']['inputpath']+"/test/{S}_R1_001.fastq.gz").S
 args['REFERENCE'] = config['ref']
 args['TEDB'] = config['tedb']
+args['BASEPATH'] = config['tepid']['basepath']
 args['SCRIPTS'] = config['tepid']['scripts']
 args['REFLINE'] = config['refline']
+
+map_values=sampmap(args['SAMPLES'])
+args['LANEDICT']=map_values.map
+args['IND']=map_values.sample
+
+print(args['LANEDICT'])
+print(args['IND'])
+
 # bash safe mode
 shell.executable("/bin/bash")
 #shell.prefix("set -euo pipefail; ")
@@ -31,11 +53,11 @@ shell.executable("/bin/bash")
 
 rule all:
     input:
-        expand('output/align/{sample}/insertions_{sample}.bed', zip, sample=args['SAMPLES']),
-        expand('output/align/{sample}/insertion_reads_{sample}.txt', zip, sample=args['SAMPLES']),
-        expand('output/align/{sample}/deletions_{sample}.bed', zip, sample=args['SAMPLES']),
-        expand('output/align/{sample}/deletion_reads_{sample}.txt', zip, sample=args['SAMPLES']),
-        expand('output/logs/tepid_discover_log_{sample}.txt', zip, sample=args['SAMPLES'])
+        expand('output/merged/{individual}/insertions_{individual}.bed', zip, individual=args['IND']),
+        expand('output/merged/{individual}/insertion_reads_{individual}.txt', zip, individual=args['IND']),
+        expand('output/merged/{individual}/deletions_{individual}.bed', zip, individual=args['IND']),
+        expand('output/merged/{individual}/deletion_reads_{individual}.txt', zip, individual=args['IND']),
+        expand('output/logs/tepid_discover_log_{individual}.txt', zip, individual=args['IND'])
 
 ##### setup singularity #####
 
@@ -50,7 +72,8 @@ report: "report/workflow.rst"
 
 
 ##### load rules #####   
-include: "rules/a_yaha_bowtie_index.smk" 
-include: "rules/01_tepid_map.smk"
-include: "rules/02_tepid_discover.smk"
+include: "rules/01_yaha_bowtie_index.smk" 
+include: "rules/02_tepid_map.smk"
+include: "rules/03_mergemapped.smk"
+include: "rules/04_tepid_discover.smk"
 
