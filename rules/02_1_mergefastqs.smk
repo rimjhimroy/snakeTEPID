@@ -1,4 +1,4 @@
-rule mergemapped:
+rule mergefastqs:
     message: """
              --- Merges fastq files from different lanes into a single file for {wildcards.individual}
              """
