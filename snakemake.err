@@ -1,0 +1,28 @@
+mkdir: cannot create directory ‘output’: File exists
+mkdir: cannot create directory ‘output/slurm_out’: File exists
+Building DAG of jobs...
+Creating conda environment envs/tepid.yaml...
+Downloading and installing remote packages.
+Environment for envs/tepid.yaml created (location: .snakemake/conda/07b1f2d5)
+Using shell: /bin/bash
+Provided cluster nodes: 9999
+Job counts:
+	count	jobs
+	1	final_output
+	1	tepid_tepav
+	2
+
+[Wed Nov 13 18:08:17 2019]
+rule tepid_tepav:
+    input: output/merged/genotyped_insertions.bed, output/merged/genotyped_deletions.bed
+    output: output/merged/tapav_ins.txt, output/merged/tapav_del.txt, output/merged/genotyped_deletions_flipped.bed
+    jobid: 1
+
+
+        python scripts/reformat_tepav_matrix_ins.py         -i output/merged/genotyped_insertions.bed         -r /home/ubelix/ips/rchoudhury/tepid_arabidopsis/input/teann/Alyrata_TEs.AtIDs.all_1.bed         -n <(echo GUL_15 BOR_02 OPP_07 HRA_08ta STG_02 BOR_07 VOR_02 HOC_03 PER_08 VLA_01 VLA_08 ING_01 OPP_02 ING_02 STG_05 VOR_08 HOC_04 PER_01 VOR_05 BOR_06 HRA_13ta HRA_10ta OPP_08 VLA_03 FUG_07 GUL_18 HRA_04ta VOR_03 PER_07 ING_03 ING_04 STG_08 STG_06 VLA_05 BOR_01 OPP_03 BOR_04 HRA_09ta HRA_06ta VOR_06 VLA_07 PER_06 HRA_03ta HRA_12ta ING_06 ING_08 GUL_19 HRA_07ta HRA_05ta FUG_05 HOC_01 FUG_02 OPP_01 BOR_08 STG_01 STG_04 FUG_04 VOR_01 ING_07 FUG_03 PER_03 STG_03 BOR_05 OPP_05 GUL_12 HRA_01ta PER_02 FUG_06 FUG_08 PER_04 VOR_07 HOC_05 GUL_13 HOC_08 OPP_06 FUG_01 GUL_11 GUL_14 BOR_03 VOR_04 VLA_04 HOC_06 VLA_02 ING_05 VLA_06 HOC_07 GUL_16 HRA_02ta HRA_11ta PER_05 OPP_04 | tr ' ' '
+') > output/merged/tapav_ins.txt 
+        awk ' { t = \$7; \$7 = \$6; \$6 = t; print; } ' output/merged/genotyped_deletions.bed |  tr ' ' '	' > output/merged/genotyped_deletions_flipped.bed
+        python scripts/reformat_tepav_matrix_del.py         -i output/merged/genotyped_deletions_flipped.bed         -r /home/ubelix/ips/rchoudhury/tepid_arabidopsis/input/teann/Alyrata_TEs.AtIDs.all_1.bed         -n <(echo GUL_15 BOR_02 OPP_07 HRA_08ta STG_02 BOR_07 VOR_02 HOC_03 PER_08 VLA_01 VLA_08 ING_01 OPP_02 ING_02 STG_05 VOR_08 HOC_04 PER_01 VOR_05 BOR_06 HRA_13ta HRA_10ta OPP_08 VLA_03 FUG_07 GUL_18 HRA_04ta VOR_03 PER_07 ING_03 ING_04 STG_08 STG_06 VLA_05 BOR_01 OPP_03 BOR_04 HRA_09ta HRA_06ta VOR_06 VLA_07 PER_06 HRA_03ta HRA_12ta ING_06 ING_08 GUL_19 HRA_07ta HRA_05ta FUG_05 HOC_01 FUG_02 OPP_01 BOR_08 STG_01 STG_04 FUG_04 VOR_01 ING_07 FUG_03 PER_03 STG_03 BOR_05 OPP_05 GUL_12 HRA_01ta PER_02 FUG_06 FUG_08 PER_04 VOR_07 HOC_05 GUL_13 HOC_08 OPP_06 FUG_01 GUL_11 GUL_14 BOR_03 VOR_04 VLA_04 HOC_06 VLA_02 ING_05 VLA_06 HOC_07 GUL_16 HRA_02ta HRA_11ta PER_05 OPP_04 | tr ' ' '
+') > output/merged/tapav_del.txt         
+WorkflowError in line 1 of /gpfs/homefs/ips/rchoudhury/tepid_arabidopsis/rules/10_tepav_table.smk:
+'Wildcards' object has no attribute 'mem'

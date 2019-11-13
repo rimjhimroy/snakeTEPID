@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [{
+            "name": "reformat_tepav_matrix_ins1.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "reformat_tepav_matrix_ins.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": ["-r", "/gpfs/homefs/ips/rchoudhury/tepid_arabidopsis/input/teann/Alyrata_TEs.AtIDs.all_1.bed", "-i", "/gpfs/homefs/ips/rchoudhury/tepid_arabidopsis/output/merged/genotyped_insertions.bed", "-n", "/gpfs/homefs/ips/rchoudhury/tepid_arabidopsis/test.txt"]
+        }
+    ]
+}

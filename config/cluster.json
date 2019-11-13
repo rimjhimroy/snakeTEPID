@@ -2,15 +2,80 @@
     "__default__" :
     {
         "account" : "rchoudhury",
-        "time" : "24:00:00",
-        "n" : 1,
-        "partition" : "empi"
+        "time" : "2-0",
+        "cpu" : 1,
+        "partition" : "all"
     },
-    "compute1" :
+    "yaha_bowtie_index" :
     {
-        "partition" : "empi",
-        "mem": "245GB",
-        "output": "slurm_out/run_supernova.out",
-        "error": "slurm_out/run_supernova.err"
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_%j.out",
+        "error": "output/slurm_out/{rule}_%j.err"
+    },
+    "tepid_map" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_{wildcards.sample}_%j.out",
+        "error": "output/slurm_out/{rule}_{wildcards.sample}_%j.err"
+    },
+    "mergemapped" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_{wildcards.individual}_%j.out",
+        "error": "output/slurm_out/{rule}_{wildcards.individual}_%j.err"
+    },
+    "tepid_discover" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_{wildcards.individual}_%j.out",
+        "error": "output/slurm_out/{rule}_{wildcards.individual}_%j.err"
+    },
+    "individual_bed_merge" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_%j.out",
+        "error": "output/slurm_out/{rule}_%j.err"
+    },
+    "tepid_refine" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_{wildcards.individual}_%j.out",
+        "error": "output/slurm_out/{rule}_{wildcards.individual}_%j.err"
+    },
+    "combine_bed" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_{wildcards.individual}_%j.out",
+        "error": "output/slurm_out/{rule}_{wildcards.individual}_%j.err"
+    },
+    "individual_bed_merge2" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_%j.out",
+        "error": "output/slurm_out/{rule}_%j.err"
+    },
+    "tepid_genotype" :
+    {
+        "partition" : "all",
+        "mem": "48G",
+        "cpu": "8",
+        "output": "output/slurm_out/{rule}_%j.out",
+        "error": "output/slurm_out/{rule}_%j.err"
     }
 }

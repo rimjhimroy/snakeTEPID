@@ -1,16 +1,16 @@
 {
     "__default__" :
     {
-        "running_locally" : "True"
+        "running_locally" : "False"
     },
     "project": {
         "inputpath": "input"
     },
     "tepid": {
-        "basepath": "/home/steve/bin/TEPID",
-        "scripts": "/home/steve/bin/TEPID/Scripts"
+        "basepath": "/home/ubelix/ips/rchoudhury/TEPID-fix",
+        "scripts": "/home/ubelix/ips/rchoudhury/TEPID-fix/Scripts"
     },
-    "tedb": "input/teann/Alyrata_TEs.AtIDs.all.gff",
-    "ref": "input/ref/alygenome.fasta",
+    "tedb": "/home/ubelix/ips/rchoudhury/tepid_arabidopsis/input/teann/Alyrata_TEs.AtIDs.all_1.bed",
+    "ref": "input/ref/alygenomes.fasta",
     "refline": "arenosa"
 }
