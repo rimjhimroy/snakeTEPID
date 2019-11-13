@@ -96,3 +96,7 @@ sbatch snakemake.sh
 NOTE: See the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/executable.html) for further details.
 
 That's it! Snakemake will automagically run tepid-map, tepid-discover, and tepid-refine steps for all of the FASTQ files provided in the input/samples folder.
+
+## Map of the workflow
+
+<img src="dag/dag.svg" alt="Directed acyclic graph (DAG) of the workflow"  width="4200" height="3000">
