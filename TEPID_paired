@@ -74,7 +74,6 @@ report: "report/workflow.rst"
 ##### load rules #####   
 include: "rules/01_yaha_bowtie_index.smk" 
 include: "rules/02_tepid_map.smk"
-
 include: "rules/03_mergemapped.smk"
 include: "rules/04_tepid_discover.smk"
 

@@ -31,7 +31,6 @@ conda activate snakemake
 ```
 
 ## Check your '.bashrc' file
-
 The following conda initiallize block should be moved to the end in thre file:
 
 ```bash
