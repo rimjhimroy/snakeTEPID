@@ -99,4 +99,4 @@ That's it! Snakemake will automagically run tepid-map, tepid-discover, and tepid
 
 ## Map of the workflow
 
-<img src="dag/dag.svg" alt="Directed acyclic graph (DAG) of the workflow"  width="4200" height="3000">
+<img src="dag/dag.svg" alt="Directed acyclic graph (DAG) of the workflow"  width="500" height="1000">
