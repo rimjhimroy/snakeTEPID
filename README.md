@@ -57,7 +57,7 @@ git clone https://github.com/rimjhimroy/snakeTEPID.git
 
 ## Prepare Data
 
-1. Copy or symlink your raw data (*.fastq.gz files) into the 'input/samples/' folder.
+1. Copy or symlink your raw data (*.fastq.gz files) into the 'input/raw/' folder.
 
 2. Make sure the data in samples folder has the following format: [SAMPLE_INCLUDING_LANE]_R1_001.fastq.gz and [SAMPLE_INCLUDING_LANE]_R2_001.fastq.gz. Lane information should be in 3 digit format like: '_L00X', eg. '_L001'. Example file name: 'BOR_01_L003_R1_001.fastq' and 'BOR_01_L003_R2_001.fastq'.
 
@@ -88,7 +88,7 @@ git clone https://github.com/rimjhimroy/snakeTEPID.git
 
 ```bash
 # dry-run
-snakemake -s TEPID_paired --use-conda --cluster-config config/cluster.json -np
+snakemake -s TEPID_paired2 --use-conda --cluster-config config/cluster.json -np
 # execute
 sbatch snakemake.sh
 ```
