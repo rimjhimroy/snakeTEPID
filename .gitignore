@@ -3,6 +3,7 @@ output/
 .snakemake/
 *.bam
 *.fastq
+*.gff
 benchmarks/
 testdiscover/
 final/
