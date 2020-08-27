@@ -10,11 +10,11 @@ This snakemake workflow for TEPID seamlessly takes care of the installations and
 Python 3
 Snakemake (Tested with 5.7.4) [if problem with activation of tepid env from snakemake, follow the "Check your '.bashrc' file" instructions]  
 Conda  
-Singularity (system-wide installation, not with conda) (at the moment singularity is not working)  
+
 
 ## TARGET PLATFORM:
 
-(Required) Singularity >= 2.4 (does not require sudo access) or Docker (requires sudo access)  
+(Required) conda
 (Optional) SLURM  
 (Optional) Ubuntu 16.04 (Xenial)  
 
